@@ -1,0 +1,2 @@
+defmodule Pianolang do
+end
