@@ -14,6 +14,6 @@ defmodule PianolangTest do
   end
 
   test "process division" do
-    assert Pianolang.exec("(/ 14 2)") == 7
+    assert Pianolang.exec("(/ 8 2)") == 4
   end
 end
