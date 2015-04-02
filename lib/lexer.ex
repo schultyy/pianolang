@@ -4,7 +4,7 @@ defmodule Pianolang.Lexer do
   end
 
   defp tokenize(tokens, []) do
-    tokens
+    { :success, tokens }
   end
 
   defp tokenize(tokens, [char | graphemes]) do
@@ -16,8 +16,13 @@ defmodule Pianolang.Lexer do
       char == "-" -> tokenize(tokens ++ [:minus], graphemes)
       char == "*" -> tokenize(tokens ++ [:mult], graphemes)
       char == "/" -> tokenize(tokens ++ [:div], graphemes)
-      true -> tokenize(tokens, graphemes)
+      is_whitespace?(char) -> tokenize(tokens, graphemes)
+      true -> {:error, "Illegal character #{char}"}
     end
+  end
+
+  defp is_whitespace?(str) do
+    Regex.match?(~r/\s/, str)
   end
 
   defp is_number?(str) do

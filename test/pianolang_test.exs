@@ -16,4 +16,8 @@ defmodule PianolangTest do
   test "process division" do
     assert Pianolang.exec("(/ 8 2)") == 4
   end
+
+  test "error on invalid operator" do
+    assert Pianolang.exec("(% 8 2)") == {:error, "Illegal character %" }
+  end
 end

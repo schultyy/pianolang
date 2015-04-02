@@ -1,7 +1,6 @@
 defmodule Pianolang.Parser do
   def parse(tokens) do
     Enum.reduce(tokens, {:scanning, []}, &parse/2)
-    |> case(do: ({:result, result} -> result))
   end
 
   defp parse(:lparen, {:scanning, []}) do
@@ -16,7 +15,7 @@ defmodule Pianolang.Parser do
       :minus -> {:result, op1 - op2 }
       :mult  -> {:result, op1 * op2 }
       :div   -> {:result, op1 / op2 }
-      _ -> {:error}
+      _ -> {:error, "invalid operator #{operator}"}
     end
   end
 
