@@ -1,4 +1,19 @@
 defmodule Pianolang do
+
+  def main(args) do
+    IO.puts "----Pianolang----"
+    repl
+  end
+
+  def repl do
+    program = IO.gets ">>> "
+    case exec(program) do
+      {:error, msg} -> IO.puts :stderr, msg
+      str -> IO.puts str
+    end
+    repl
+  end
+
   def exec(program) do
     case lex(program) do
       {:success, tokens} -> parse(tokens)

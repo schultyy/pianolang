@@ -5,6 +5,7 @@ defmodule Pianolang.Mixfile do
     [app: :pianolang,
      version: "0.0.1",
      elixir: "~> 1.0",
+     escript: [main_module: Pianolang],
      deps: deps]
   end
 
