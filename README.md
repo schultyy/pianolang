@@ -19,7 +19,7 @@ Then run `mix escript.build` to compile the application. This places the executa
 To run it, do the following:
 
 ```
-./pianolang
+$ ./pianolang
 ----Pianolang----
 >>> (+ 1 2)
 3
